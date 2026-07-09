@@ -7,6 +7,7 @@ export default function Home() {
   const sliderRef = useRef(null);
   const [sparks, setSparks] = useState([]);
   const [visibleStations, setVisibleStations] = useState([]);
+  const [activeStage, setActiveStage] = useState(null);
 
   useEffect(() => {
     const s = Array.from({length: 18}, (_, i) => ({
@@ -33,6 +34,19 @@ export default function Home() {
     document.querySelectorAll('[data-station]').forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!activeStage) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setActiveStage(null);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [activeStage]);
 
   const handleSliderMove = (e) => {
     if (!dragging || !sliderRef.current) return;
@@ -73,6 +87,51 @@ export default function Home() {
   ];
 
   const tierColors = { Starter: '#22c55e', Pro: '#f97316', Enterprise: '#7c3aed' };
+
+  const pipelineStages = [
+    {
+      n: '01',
+      title: 'Requirements Gathering',
+      desc: 'We collaborate with your team to understand goals, audience, and scope through kick-off meetings, forms, and stakeholder alignment.',
+      image: '/img/pipeline/step-01.png',
+    },
+    {
+      n: '02',
+      title: 'Research & Analysis',
+      desc: 'We collect and analyze technical information from all available sources to build a complete understanding.',
+      image: '/img/pipeline/step-02.png',
+    },
+    {
+      n: '03',
+      title: 'Content Planning',
+      desc: 'We structure information, define the documentation outline, and plan the best way to communicate it.',
+      image: '/img/pipeline/step-03.png',
+    },
+    {
+      n: '04',
+      title: '7Forge — The Forge',
+      desc: '7Forge Technical Writing is the human in the loop — crafting clear, accurate, and developer-friendly documentation with expertise, review, and the right tools.',
+      image: '/img/pipeline/step-04.png',
+    },
+    {
+      n: '05',
+      title: 'Review & Feedback',
+      desc: 'We review for accuracy, clarity, and completeness with internal checks and your feedback to ensure everything is right.',
+      image: '/img/pipeline/step-05.png',
+    },
+    {
+      n: '06',
+      title: 'Publish & Deliver',
+      desc: 'We format, publish, and deliver your documentation in the right platforms and formats — ready for your users.',
+      image: '/img/pipeline/step-06.png',
+    },
+    {
+      n: '07',
+      title: 'Maintain & Improve',
+      desc: 'We continuously update and improve documentation as your product evolves and your users grow.',
+      image: '/img/pipeline/step-07.png',
+    },
+  ];
 
   return (
     <Layout title="7Forge Technical Writing" description="Forging Technical Documentation That Developers Actually Use">
@@ -209,6 +268,17 @@ export default function Home() {
           color: #9ca3af;
           text-align: center;
           min-width: 90px;
+          cursor: pointer;
+          margin: 0;
+          transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+        }
+        .pipe-input:hover,
+        .pipe-input:focus-visible {
+          border-color: #f97316;
+          color: #fed7aa;
+          box-shadow: 0 0 16px rgba(249,115,22,0.45);
+          transform: translateY(-2px);
+          outline: none;
         }
 
         .pipe-arrow {
@@ -227,6 +297,15 @@ export default function Home() {
           box-shadow: 0 0 40px rgba(249,115,22,0.4), inset 0 0 20px rgba(249,115,22,0.1);
           animation: forgePulse 2s ease-in-out infinite;
           min-width: 120px;
+          cursor: pointer;
+          margin: 0;
+          transition: box-shadow 0.25s ease, transform 0.2s ease;
+        }
+        .pipe-forge:hover,
+        .pipe-forge:focus-visible {
+          box-shadow: 0 0 70px rgba(249,115,22,0.8), inset 0 0 24px rgba(249,115,22,0.2);
+          transform: translateY(-2px);
+          outline: none;
         }
         @keyframes forgePulse {
           0%, 100% { box-shadow: 0 0 40px rgba(249,115,22,0.4); }
@@ -259,6 +338,15 @@ export default function Home() {
           color: #fed7aa;
           text-align: center;
           min-width: 90px;
+          cursor: pointer;
+          margin: 0;
+          transition: box-shadow 0.25s ease, transform 0.2s ease;
+        }
+        .pipe-output:hover,
+        .pipe-output:focus-visible {
+          box-shadow: 0 0 16px rgba(249,115,22,0.5);
+          transform: translateY(-2px);
+          outline: none;
         }
 
         .forge-ctas {
@@ -475,32 +563,54 @@ export default function Home() {
         .forge-principle-title { font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 6px; }
         .forge-principle-desc { color: #6b7280; font-size: 14px; line-height: 1.6; margin: 0; }
 
-        /* TIMELINE */
+        /* TIMELINE / PIPELINE BLOCKS */
         .forge-timeline {
           display: flex;
-          align-items: flex-start;
+          align-items: stretch;
           justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 16px;
           position: relative;
           margin-top: 56px;
         }
         .forge-timeline::before {
           content: '';
           position: absolute;
-          top: 24px;
+          top: 44px;
           left: 8%;
           right: 8%;
           height: 1px;
           background: linear-gradient(90deg, #1f2937, #f97316, #1f2937);
+          z-index: 0;
         }
         .forge-step {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
           flex: 1;
+          min-width: 130px;
           text-align: center;
           position: relative;
           z-index: 1;
+          background: transparent;
+          border: 1px solid transparent;
+          border-radius: 12px;
+          padding: 16px 10px;
+          font-family: inherit;
+          color: inherit;
+        }
+        .forge-step-clickable {
+          cursor: pointer;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
+        }
+        .forge-step-clickable:hover,
+        .forge-step-clickable:focus-visible {
+          border-color: #f97316;
+          background: rgba(249,115,22,0.05);
+          box-shadow: 0 0 16px rgba(249,115,22,0.35), 0 0 32px rgba(249,115,22,0.15);
+          transform: translateY(-3px);
+          outline: none;
         }
         .forge-step-dot {
           width: 48px;
@@ -516,13 +626,96 @@ export default function Home() {
           color: #6b7280;
           transition: all 0.3s;
         }
-        .forge-step:hover .forge-step-dot {
+        .forge-step-clickable:hover .forge-step-dot {
           border-color: #f97316;
           color: #f97316;
           box-shadow: 0 0 20px rgba(249,115,22,0.3);
         }
         .forge-step-label { font-size: 13px; font-weight: 600; color: #9ca3af; }
-        .forge-step-desc { font-size: 11px; color: #4b5563; line-height: 1.5; max-width: 80px; }
+        .forge-step-desc { font-size: 11px; color: #4b5563; line-height: 1.5; max-width: 110px; }
+        .forge-step-hint {
+          font-size: 10px;
+          font-family: 'JetBrains Mono', monospace;
+          letter-spacing: 0.5px;
+          color: #f97316;
+          opacity: 0;
+          transition: opacity 0.25s ease;
+        }
+        .forge-step-clickable:hover .forge-step-hint { opacity: 1; }
+
+        /* PIPELINE MODAL */
+        .forge-modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.75);
+          backdrop-filter: blur(4px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          padding: 24px;
+          animation: forgeModalFadeIn 0.2s ease;
+        }
+        @keyframes forgeModalFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .forge-modal-content {
+          position: relative;
+          background: #111827;
+          border-radius: 14px;
+          max-width: 720px;
+          width: 100%;
+          max-height: 85vh;
+          overflow-y: auto;
+          border: 1px solid rgba(249,115,22,0.4);
+          box-shadow: 0 0 50px rgba(249,115,22,0.25);
+          animation: forgeModalSlideUp 0.25s ease;
+        }
+        @keyframes forgeModalSlideUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .forge-modal-close {
+          position: absolute;
+          top: 12px;
+          right: 14px;
+          background: rgba(0,0,0,0.4);
+          border: 1px solid #374151;
+          border-radius: 50%;
+          width: 34px;
+          height: 34px;
+          font-size: 20px;
+          line-height: 1;
+          color: #fff;
+          cursor: pointer;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s;
+        }
+        .forge-modal-close:hover { border-color: #f97316; color: #f97316; }
+        .forge-modal-image-wrap {
+          width: 100%;
+          background: #0d0d12;
+          border-radius: 14px 14px 0 0;
+          overflow: hidden;
+        }
+        .forge-modal-image { width: 100%; display: block; object-fit: cover; }
+        .forge-modal-body { padding: 28px 32px 36px; }
+        .forge-modal-step {
+          display: inline-block;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #f97316;
+          margin-bottom: 10px;
+        }
+        .forge-modal-title { font-size: 26px; font-weight: 800; color: #f9fafb; margin: 0 0 14px; letter-spacing: -0.5px; }
+        .forge-modal-desc { color: #9ca3af; font-size: 15px; line-height: 1.7; margin: 0; }
 
         /* ARSENAL */
         .forge-arsenal {
@@ -777,18 +970,34 @@ export default function Home() {
           <div className="forge-pipeline">
             {['API Specs','Source Code','SME Interviews'].map((item,i) => (
               <React.Fragment key={i}>
-                <div className="pipe-input">{item}</div>
+                <button
+                  type="button"
+                  className="pipe-input"
+                  onClick={() => setActiveStage(pipelineStages[i])}
+                >
+                  {item}
+                </button>
                 <span className="pipe-arrow">&#8594;</span>
               </React.Fragment>
             ))}
-            <div className="pipe-forge">
+            <button
+              type="button"
+              className="pipe-forge"
+              onClick={() => setActiveStage(pipelineStages[3])}
+            >
               <div className="pipe-forge-bar"/>
               <span className="pipe-forge-label">7Forge</span>
-            </div>
+            </button>
             <span className="pipe-arrow" style={{color:'#f97316'}}>&#8594;</span>
             {['API Docs','Dev Portals','SDK Guides'].map((item,i) => (
               <React.Fragment key={i}>
-                <div className="pipe-output">{item}</div>
+                <button
+                  type="button"
+                  className="pipe-output"
+                  onClick={() => setActiveStage(pipelineStages[4 + i])}
+                >
+                  {item}
+                </button>
                 {i < 2 && <span className="pipe-arrow" style={{color:'#f97316'}}>+</span>}
               </React.Fragment>
             ))}
@@ -926,25 +1135,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROCESS TIMELINE */}
+        {/* PROCESS TIMELINE / PIPELINE STAGES */}
         <section className="forge-section forge-section-mid">
           <div className="forge-container">
             <span className="forge-label">// process</span>
             <h2 className="forge-h2">How Every Project Is Forged</h2>
+            <p className="forge-lead">Click any stage to see it in detail.</p>
             <div className="forge-timeline">
-              {[
-                {n:'01',label:'Discovery',desc:'Goals, audience, API access'},
-                {n:'02',label:'Blueprint',desc:'Scope, architecture, plan'},
-                {n:'03',label:'Forge',desc:'Research, write, test'},
-                {n:'04',label:'Refine',desc:'Engineer review, revisions'},
-                {n:'05',label:'QA',desc:'Accuracy, style, links'},
-                {n:'06',label:'Delivery',desc:'Live docs, handoff, invoice'},
-              ].map(step=>(
-                <div key={step.n} className="forge-step">
-                  <div className="forge-step-dot">{step.n}</div>
-                  <span className="forge-step-label">{step.label}</span>
-                  <span className="forge-step-desc">{step.desc}</span>
-                </div>
+              {pipelineStages.map(stage=>(
+                <button
+                  key={stage.n}
+                  type="button"
+                  className="forge-step forge-step-clickable"
+                  onClick={() => setActiveStage(stage)}
+                >
+                  <div className="forge-step-dot">{stage.n}</div>
+                  <span className="forge-step-label">{stage.title}</span>
+                  <span className="forge-step-hint">View details &rarr;</span>
+                </button>
               ))}
             </div>
           </div>
@@ -1053,6 +1261,49 @@ export default function Home() {
         </section>
 
       </div>
+
+      {/* PIPELINE STAGE MODAL */}
+      {activeStage && (
+        <div
+          className="forge-modal-overlay"
+          onClick={() => setActiveStage(null)}
+          role="presentation"
+        >
+          <div
+            className="forge-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="pipeline-modal-title"
+          >
+            <button
+              className="forge-modal-close"
+              onClick={() => setActiveStage(null)}
+              aria-label="Close"
+              type="button"
+            >
+              &times;
+            </button>
+
+            <div className="forge-modal-image-wrap">
+              <img
+                src={activeStage.image}
+                alt={activeStage.title}
+                className="forge-modal-image"
+              />
+            </div>
+
+            <div className="forge-modal-body">
+              <span className="forge-modal-step">Step {activeStage.n}</span>
+              <h3 id="pipeline-modal-title" className="forge-modal-title">
+                {activeStage.title}
+              </h3>
+              <p className="forge-modal-desc">{activeStage.desc}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </Layout>
   );
 }

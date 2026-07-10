@@ -274,9 +274,10 @@ export default function Home() {
         }
         .pipe-input:hover,
         .pipe-input:focus-visible {
+          background: #2a2f3d;
           border-color: #f97316;
           color: #fed7aa;
-          box-shadow: 0 0 16px rgba(249,115,22,0.45);
+          box-shadow: 0 0 20px rgba(249,115,22,0.6), 0 0 6px rgba(249,115,22,0.8);
           transform: translateY(-2px);
           outline: none;
         }
@@ -344,7 +345,8 @@ export default function Home() {
         }
         .pipe-output:hover,
         .pipe-output:focus-visible {
-          box-shadow: 0 0 16px rgba(249,115,22,0.5);
+          background: linear-gradient(135deg, #1a2030, #2a2f3d);
+          box-shadow: 0 0 20px rgba(249,115,22,0.6), 0 0 6px rgba(249,115,22,0.8);
           transform: translateY(-2px);
           outline: none;
         }

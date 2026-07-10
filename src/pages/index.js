@@ -1035,8 +1035,8 @@ export default function Home() {
                   <span className="forge-cred-badge">Certified Technical Writer — Technical Writer HQ</span>
                 </div>
                 <div className="forge-founder-social">
-                  <a href="#" className="forge-social-link" aria-label="YouTube">YouTube</a>
-                  <a href="#" className="forge-social-link" aria-label="Instagram">Instagram</a>
+                  <a href="https://www.youtube.com/channel/UClGBfS-XWqxpOaMt1ffA73w" target="_blank" rel="noopener noreferrer" className="forge-social-link" aria-label="YouTube">YouTube</a>
+                  <a href="https://www.instagram.com/7forgetechwriting?igsh=MWdibTI0MDJydDRjOQ==" target="_blank" rel="noopener noreferrer" className="forge-social-link" aria-label="Instagram">Instagram</a>
                 </div>
               </div>
             </div>

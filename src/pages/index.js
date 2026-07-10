@@ -260,7 +260,7 @@ export default function Home() {
 
         .pipe-input {
           background: #1f2937;
-          border: 1px solid #374151;
+          border: 1px solid #f97316;
           border-radius: 8px;
           padding: 10px 14px;
           font-family: 'JetBrains Mono', monospace;

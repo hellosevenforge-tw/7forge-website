@@ -1,4 +1,4 @@
-// @ts-check
+﻿// @ts-check
 const { themes } = require('prism-react-renderer');
 
 /** @type {import('@docusaurus/types').Config} */
@@ -59,28 +59,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'System',
+            title: '7Forge',
             items: [
-              { label: 'Foundation', to: '/foundation/introduction' },
-              { label: 'Workflow', to: '/workflow/lifecycle' },
-              { label: 'Core Docs', to: '/core-docs/api-reference' },
-              { label: 'NotiFlow', to: '/notiflow/overview' },
-            ],
-          },
-          {
-            title: 'Tools',
-            items: [
-              { label: 'GitHub Workflow', to: '/tools/github' },
-              { label: 'OpenAPI / Swagger', to: '/tools/openapi' },
-              { label: 'VS Code & Markdown', to: '/tools/vscode' },
-              { label: 'Docs as Code', to: '/tools/docs-as-code' },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              { label: 'Downloads', to: '/downloads' },
-              { label: 'Gumroad Store', href: 'https://gumroad.com' },
+              { label: 'YouTube', href: 'https://www.youtube.com/channel/UClGBfS-XWqxpOaMt1ffA73w' },
+              { label: 'Instagram', href: 'https://www.instagram.com/7forgetechwriting?igsh=MWdibTI0MDJydDRjOQ==' },
+              { label: 'Gumroad Store', href: 'https://forgefire48.gumroad.com/l/xmyqub' },
             ],
           },
         ],
@@ -100,3 +83,4 @@ const config = {
 };
 
 module.exports = config;
+

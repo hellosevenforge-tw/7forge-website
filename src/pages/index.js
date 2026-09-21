@@ -874,6 +874,7 @@ export default function Home() {
         .forge-anvil-name { font-size: 11px; font-weight: 700; color: #6b7280; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; }
         .forge-anvil-price { font-size: 48px; font-weight: 800; color: #f9fafb; letter-spacing: -2px; margin: 0 0 4px; line-height: 1; }
         .forge-anvil-price span { font-size: 14px; color: #6b7280; font-weight: 400; letter-spacing: 0; }
+        .forge-anvil-price-soon { font-size: 30px; }
         .forge-anvil-sub { font-size: 13px; color: #4b5563; margin: 0 0 24px; }
         .forge-anvil ul { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid #1f2937; padding-top: 20px; }
         .forge-anvil li { font-size: 13px; color: #9ca3af; padding: 7px 0; border-bottom: 1px solid #111827; display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; }
@@ -1198,7 +1199,7 @@ export default function Home() {
                   <div className="forge-anvil-bar" style={{height:'80%'}}/>
                 </div>
                 <p className="forge-anvil-name">Forge Starter</p>
-                <p className="forge-anvil-price">$29<span> /one time</span></p>
+                <p className="forge-anvil-price forge-anvil-price-soon">Coming Soon</p>
                 <p className="forge-anvil-sub">For beginners and learners</p>
                 <ul>
                   {['API reference template','Getting started guide','Authentication guide','Error code reference','GitBook setup guide','Basic workflow documentation'].map((item,i)=>(
@@ -1218,7 +1219,7 @@ export default function Home() {
                   <div className="forge-anvil-bar" style={{height:'50%'}}/>
                 </div>
                 <p className="forge-anvil-name">Forge Pro</p>
-                <p className="forge-anvil-price">$99<span> /one time</span></p>
+                <p className="forge-anvil-price forge-anvil-price-soon">Coming Soon</p>
                 <p className="forge-anvil-sub">For freelancers and SaaS teams</p>
                 <ul>
                   {['Everything in Starter','Full workflow system','GitHub and OpenAPI examples','Docs-as-code structure','Industry workflow simulations','NotiFlow GitHub repo structure','Postman collection included','Review systems and SOPs'].map((item,i)=>(
@@ -1238,7 +1239,7 @@ export default function Home() {
                   <div className="forge-anvil-bar" style={{height:'60%'}}/>
                 </div>
                 <p className="forge-anvil-name">Forge Enterprise</p>
-                <p className="forge-anvil-price">$249<span> /one time</span></p>
+                <p className="forge-anvil-price forge-anvil-price-soon">Coming Soon</p>
                 <p className="forge-anvil-sub">For agencies and companies</p>
                 <ul>
                   {['Everything in Pro','Full operational system','Client onboarding templates','QA systems and checklists','AI workflow documentation','Team structure systems','Complete NotiFlow system','Style guide and governance'].map((item,i)=>(

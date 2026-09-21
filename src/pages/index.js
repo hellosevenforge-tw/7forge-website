@@ -140,12 +140,33 @@ export default function Home() {
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         .forge-page * { box-sizing: border-box; }
-        .forge-page { font-family: 'Inter', sans-serif; background: #111827; }
+        .forge-page {
+          --fg-950: #0d0d12;
+          --fg-900: #111827;
+          --fg-800: #1f2937;
+          --fg-700: #374151;
+          --fg-50: #f9fafb;
+          --fg-400: #9ca3af;
+          --fg-500: #6b7280;
+          --fg-600: #4b5563;
+          font-family: 'Inter', sans-serif;
+          background: var(--fg-900);
+        }
+        html[data-theme='light'] .forge-page {
+          --fg-950: #ffffff;
+          --fg-900: #f8fafc;
+          --fg-800: #f1f5f9;
+          --fg-700: #e2e8f0;
+          --fg-50: #0f172a;
+          --fg-400: #475569;
+          --fg-500: #64748b;
+          --fg-600: #94a3b8;
+        }
 
         /* HERO */
         .forge-hero {
           min-height: 100vh;
-          background: #0d0d12;
+          background: var(--fg-950);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -170,7 +191,7 @@ export default function Home() {
           position: absolute;
           bottom: 0; left: 0; right: 0;
           height: 200px;
-          background: linear-gradient(transparent, #111827);
+          background: linear-gradient(transparent, var(--fg-900));
           pointer-events: none;
         }
 
@@ -213,7 +234,7 @@ export default function Home() {
           font-size: clamp(36px, 6vw, 72px);
           font-weight: 900;
           line-height: 1.08;
-          color: #f9fafb;
+          color: var(--fg-50);
           margin: 0 0 28px;
           letter-spacing: -2px;
           position: relative;
@@ -237,7 +258,7 @@ export default function Home() {
 
         .forge-sub {
           font-size: 18px;
-          color: #9ca3af;
+          color: var(--fg-400);
           max-width: 580px;
           line-height: 1.7;
           margin: 0 auto 48px;
@@ -259,13 +280,13 @@ export default function Home() {
         }
 
         .pipe-input {
-          background: #1f2937;
+          background: var(--fg-800);
           border: 1px solid #f97316;
           border-radius: 8px;
           padding: 10px 14px;
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          color: #9ca3af;
+          color: var(--fg-400);
           text-align: center;
           min-width: 90px;
           cursor: pointer;
@@ -283,7 +304,7 @@ export default function Home() {
         }
 
         .pipe-arrow {
-          color: #374151;
+          color: var(--fg-700);
           font-size: 16px;
           padding: 0 2px;
           flex-shrink: 0;
@@ -330,7 +351,7 @@ export default function Home() {
         }
 
         .pipe-output {
-          background: linear-gradient(135deg, #111827, #1f2937);
+          background: linear-gradient(135deg, var(--fg-900), var(--fg-800));
           border: 1px solid #f97316;
           border-radius: 8px;
           padding: 10px 14px;
@@ -372,8 +393,8 @@ export default function Home() {
         }
         .forge-btn-primary:hover { background: #ea6c0a; transform: translateY(-1px); }
         .forge-btn-ghost {
-          border: 1.5px solid #374151;
-          color: #9ca3af !important;
+          border: 1.5px solid var(--fg-700);
+          color: var(--fg-400) !important;
           padding: 16px 36px;
           border-radius: 6px;
           font-weight: 600;
@@ -385,8 +406,8 @@ export default function Home() {
 
         /* SECTIONS */
         .forge-section { padding: 100px 24px; }
-        .forge-section-dark { background: #0d0d12; }
-        .forge-section-mid { background: #111827; }
+        .forge-section-dark { background: var(--fg-950); }
+        .forge-section-mid { background: var(--fg-900); }
 
         .forge-container { max-width: 1100px; margin: 0 auto; }
 
@@ -403,7 +424,7 @@ export default function Home() {
         .forge-h2 {
           font-size: clamp(28px, 4vw, 48px);
           font-weight: 800;
-          color: #f9fafb;
+          color: var(--fg-50);
           letter-spacing: -1px;
           margin: 0 0 16px;
           line-height: 1.1;
@@ -411,7 +432,7 @@ export default function Home() {
 
         .forge-lead {
           font-size: 17px;
-          color: #6b7280;
+          color: var(--fg-500);
           line-height: 1.7;
           max-width: 560px;
           margin: 0 0 56px;
@@ -432,8 +453,8 @@ export default function Home() {
           display: flex;
           align-items: flex-start;
           gap: 24px;
-          background: #1f2937;
-          border: 1px solid #374151;
+          background: var(--fg-800);
+          border: 1px solid var(--fg-700);
           border-left: 3px solid #f97316;
           border-radius: 10px;
           padding: 28px;
@@ -453,9 +474,9 @@ export default function Home() {
           flex-shrink: 0;
           font-family: 'JetBrains Mono', monospace;
         }
-        .forge-founder-name { font-weight: 700; color: #f9fafb; font-size: 16px; margin: 0 0 3px; }
+        .forge-founder-name { font-weight: 700; color: var(--fg-50); font-size: 16px; margin: 0 0 3px; }
         .forge-founder-role { color: #f97316; font-size: 11px; font-weight: 600; margin: 0 0 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; }
-        .forge-founder-bio { color: #6b7280; font-size: 14px; line-height: 1.6; margin: 0; }
+        .forge-founder-bio { color: var(--fg-500); font-size: 14px; line-height: 1.6; margin: 0; }
         .forge-founder-creds { margin: 14px 0 0; }
         .forge-cred-badge {
           display: inline-block;
@@ -471,10 +492,10 @@ export default function Home() {
         .forge-founder-social { display: flex; gap: 10px; margin-top: 14px; }
         .forge-social-link {
           font-size: 12px;
-          color: #6b7280;
+          color: var(--fg-500);
           text-decoration: none !important;
           font-family: 'JetBrains Mono', monospace;
-          border: 1px solid #374151;
+          border: 1px solid var(--fg-700);
           padding: 6px 14px;
           border-radius: 6px;
           transition: all 0.2s;
@@ -484,8 +505,8 @@ export default function Home() {
         /* STATIONS */
         .forge-stations { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
         .forge-station {
-          background: #111827;
-          border: 1px solid #1f2937;
+          background: var(--fg-900);
+          border: 1px solid var(--fg-800);
           border-radius: 10px;
           padding: 40px 36px;
           transition: all 0.3s;
@@ -508,7 +529,7 @@ export default function Home() {
           transition: height 0.4s ease;
         }
         .forge-station:hover .forge-station-bar { height: 100%; }
-        .forge-station:hover { background: #151c27; border-color: #374151; }
+        .forge-station:hover { background: #151c27; border-color: var(--fg-700); }
         .forge-station-icon-box {
           width: 48px;
           height: 48px;
@@ -540,8 +561,8 @@ export default function Home() {
           margin-bottom: 12px;
           font-family: 'JetBrains Mono', monospace;
         }
-        .forge-station h3 { font-size: 22px; font-weight: 700; color: #f9fafb; margin: 0 0 12px; }
-        .forge-station p { color: #6b7280; font-size: 15px; line-height: 1.7; margin: 0; }
+        .forge-station h3 { font-size: 22px; font-weight: 700; color: var(--fg-50); margin: 0 0 12px; }
+        .forge-station p { color: var(--fg-500); font-size: 15px; line-height: 1.7; margin: 0; }
 
         /* PRINCIPLES */
         .forge-principles { display: grid; gap: 0; }
@@ -550,7 +571,7 @@ export default function Home() {
           align-items: flex-start;
           gap: 24px;
           padding: 28px 0;
-          border-bottom: 1px solid #1f2937;
+          border-bottom: 1px solid var(--fg-800);
         }
         .forge-principle:last-child { border-bottom: none; }
         .forge-principle-num {
@@ -562,8 +583,8 @@ export default function Home() {
           width: 28px;
           margin-top: 2px;
         }
-        .forge-principle-title { font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 6px; }
-        .forge-principle-desc { color: #6b7280; font-size: 14px; line-height: 1.6; margin: 0; }
+        .forge-principle-title { font-size: 18px; font-weight: 700; color: var(--fg-50); margin: 0 0 6px; }
+        .forge-principle-desc { color: var(--fg-500); font-size: 14px; line-height: 1.6; margin: 0; }
 
         /* TIMELINE / PIPELINE BLOCKS */
         .forge-timeline {
@@ -582,7 +603,7 @@ export default function Home() {
           left: 8%;
           right: 8%;
           height: 1px;
-          background: linear-gradient(90deg, #1f2937, #f97316, #1f2937);
+          background: linear-gradient(90deg, var(--fg-800), #f97316, var(--fg-800));
           z-index: 0;
         }
         .forge-step {
@@ -618,14 +639,14 @@ export default function Home() {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background: #0d0d12;
-          border: 1px solid #374151;
+          background: var(--fg-950);
+          border: 1px solid var(--fg-700);
           display: flex;
           align-items: center;
           justify-content: center;
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          color: #6b7280;
+          color: var(--fg-500);
           transition: all 0.3s;
         }
         .forge-step-clickable:hover .forge-step-dot {
@@ -633,8 +654,8 @@ export default function Home() {
           color: #f97316;
           box-shadow: 0 0 20px rgba(249,115,22,0.3);
         }
-        .forge-step-label { font-size: 13px; font-weight: 600; color: #9ca3af; }
-        .forge-step-desc { font-size: 11px; color: #4b5563; line-height: 1.5; max-width: 110px; }
+        .forge-step-label { font-size: 13px; font-weight: 600; color: var(--fg-400); }
+        .forge-step-desc { font-size: 11px; color: var(--fg-600); line-height: 1.5; max-width: 110px; }
         .forge-step-hint {
           font-size: 10px;
           font-family: 'JetBrains Mono', monospace;
@@ -664,7 +685,7 @@ export default function Home() {
         }
         .forge-modal-content {
           position: relative;
-          background: #111827;
+          background: var(--fg-900);
           border-radius: 14px;
           max-width: 720px;
           width: 100%;
@@ -683,7 +704,7 @@ export default function Home() {
           top: 12px;
           right: 14px;
           background: rgba(0,0,0,0.4);
-          border: 1px solid #374151;
+          border: 1px solid var(--fg-700);
           border-radius: 50%;
           width: 34px;
           height: 34px;
@@ -700,7 +721,7 @@ export default function Home() {
         .forge-modal-close:hover { border-color: #f97316; color: #f97316; }
         .forge-modal-image-wrap {
           width: 100%;
-          background: #0d0d12;
+          background: var(--fg-950);
           border-radius: 14px 14px 0 0;
           overflow: hidden;
         }
@@ -716,8 +737,8 @@ export default function Home() {
           color: #f97316;
           margin-bottom: 10px;
         }
-        .forge-modal-title { font-size: 26px; font-weight: 800; color: #f9fafb; margin: 0 0 14px; letter-spacing: -0.5px; }
-        .forge-modal-desc { color: #9ca3af; font-size: 15px; line-height: 1.7; margin: 0; }
+        .forge-modal-title { font-size: 26px; font-weight: 800; color: var(--fg-50); margin: 0 0 14px; letter-spacing: -0.5px; }
+        .forge-modal-desc { color: var(--fg-400); font-size: 15px; line-height: 1.7; margin: 0; }
 
         /* ARSENAL */
         .forge-arsenal {
@@ -726,8 +747,8 @@ export default function Home() {
           gap: 12px;
         }
         .forge-tool {
-          background: #111827;
-          border: 1px solid #1f2937;
+          background: var(--fg-900);
+          border: 1px solid var(--fg-800);
           border-radius: 8px;
           padding: 20px;
           display: flex;
@@ -746,8 +767,8 @@ export default function Home() {
           border-radius: 50%;
           flex-shrink: 0;
         }
-        .forge-tool-name { font-weight: 600; color: #f9fafb; font-size: 14px; margin: 0 0 3px; }
-        .forge-tool-desc { font-size: 12px; color: #6b7280; margin: 0; }
+        .forge-tool-name { font-weight: 600; color: var(--fg-50); font-size: 14px; margin: 0 0 3px; }
+        .forge-tool-desc { font-size: 12px; color: var(--fg-500); margin: 0; }
         .forge-tool-tier {
           margin-left: auto;
           font-family: 'JetBrains Mono', monospace;
@@ -766,7 +787,7 @@ export default function Home() {
           height: 340px;
           border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #374151;
+          border: 1px solid var(--fg-700);
           cursor: ew-resize;
           user-select: none;
         }
@@ -827,20 +848,20 @@ export default function Home() {
           margin-top: 16px;
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          color: #4b5563;
+          color: var(--fg-600);
           letter-spacing: 1px;
         }
 
         /* PRICING */
         .forge-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
         .forge-anvil {
-          background: #0d0d12;
-          border: 1px solid #1f2937;
+          background: var(--fg-950);
+          border: 1px solid var(--fg-800);
           padding: 40px 32px;
           position: relative;
           transition: all 0.3s;
         }
-        .forge-anvil:hover { border-color: #374151; background: #0f1420; }
+        .forge-anvil:hover { border-color: var(--fg-700); background: #0f1420; }
         .forge-anvil-featured { border-color: #f97316; background: #0f0c08; }
         .forge-anvil-featured:hover { border-color: #f97316; }
         .forge-anvil-badge {
@@ -865,19 +886,19 @@ export default function Home() {
         }
         .forge-anvil-bar {
           width: 8px;
-          background: #1f2937;
+          background: var(--fg-800);
           border-radius: 2px;
           transition: background 0.3s;
         }
         .forge-anvil:hover .forge-anvil-bar,
         .forge-anvil-featured .forge-anvil-bar { background: #f97316; }
-        .forge-anvil-name { font-size: 11px; font-weight: 700; color: #6b7280; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; }
-        .forge-anvil-price { font-size: 48px; font-weight: 800; color: #f9fafb; letter-spacing: -2px; margin: 0 0 4px; line-height: 1; }
-        .forge-anvil-price span { font-size: 14px; color: #6b7280; font-weight: 400; letter-spacing: 0; }
+        .forge-anvil-name { font-size: 11px; font-weight: 700; color: var(--fg-500); letter-spacing: 2px; text-transform: uppercase; margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; }
+        .forge-anvil-price { font-size: 48px; font-weight: 800; color: var(--fg-50); letter-spacing: -2px; margin: 0 0 4px; line-height: 1; }
+        .forge-anvil-price span { font-size: 14px; color: var(--fg-500); font-weight: 400; letter-spacing: 0; }
         .forge-anvil-price-soon { font-size: 30px; }
-        .forge-anvil-sub { font-size: 13px; color: #4b5563; margin: 0 0 24px; }
-        .forge-anvil ul { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid #1f2937; padding-top: 20px; }
-        .forge-anvil li { font-size: 13px; color: #9ca3af; padding: 7px 0; border-bottom: 1px solid #111827; display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; }
+        .forge-anvil-sub { font-size: 13px; color: var(--fg-600); margin: 0 0 24px; }
+        .forge-anvil ul { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid var(--fg-800); padding-top: 20px; }
+        .forge-anvil li { font-size: 13px; color: var(--fg-400); padding: 7px 0; border-bottom: 1px solid var(--fg-900); display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; }
         .forge-anvil-tick { color: #f97316; flex-shrink: 0; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 1px; }
         .forge-anvil-btn {
           display: block;
@@ -891,7 +912,7 @@ export default function Home() {
           font-family: 'JetBrains Mono', monospace;
           letter-spacing: 1px;
         }
-        .btn-outline { border: 1px solid #374151; color: #9ca3af !important; }
+        .btn-outline { border: 1px solid var(--fg-700); color: var(--fg-400) !important; }
         .btn-outline:hover { border-color: #f97316; color: #f97316 !important; }
         .btn-fill { background: #f97316; color: white !important; }
         .btn-fill:hover { background: #ea6c0a; }
